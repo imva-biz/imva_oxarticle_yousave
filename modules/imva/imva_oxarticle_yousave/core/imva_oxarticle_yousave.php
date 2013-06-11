@@ -15,7 +15,7 @@
  */
 
 class imva_oxarticle_yousave extends imva_oxarticle_yousave_parent{
-	
+
 	/**
 	 * You save...  percent (discounted price vs. regular price)
 	 * @return integer
@@ -24,14 +24,14 @@ class imva_oxarticle_yousave extends imva_oxarticle_yousave_parent{
 	{
 		$dRegularPrice = $this->getRegularPrice();
 		$dReducedPrice = $this->getPrice()->getBruttoPrice();
-		
+
 		$dPercentage = 100 - (100 / $dRegularPrice * $dReducedPrice);
-		
+
 		return round($dPercentage,0);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Regular price (simple fetch)
 	 * @return double
@@ -41,9 +41,9 @@ class imva_oxarticle_yousave extends imva_oxarticle_yousave_parent{
 		$sReturn = $this->oxarticles__oxprice->value;
 		return $sReturn;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Regular price, formatted
 	 * Dirty, without use of oxprice! (q&d)
@@ -51,7 +51,7 @@ class imva_oxarticle_yousave extends imva_oxarticle_yousave_parent{
 	 */
 	public function getRegularFPrice()
 	{
-		$sReturn = str_replace($this->getRegularPrice(),'.','.');
+		$sReturn = str_replace('.',',',$this->getRegularPrice());
 		return $sReturn;
 	}
 }
